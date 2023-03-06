@@ -16,8 +16,26 @@ a {
   color: black;
   text-decoration: none;
 }
+
 a:hover {
   color: teal;
+}
+button {
+  font: 1.6rem helvetica;
+  padding: 1.6rem;
+  border: 0.1rem gray solid;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+button:hover{
+  border: 0.1rem black solid;
+}
+button.primary{
+  background-color: lightcoral;
+
+}
+.fw{
+  width: 100%;
 }
 .grid-container {
   display: grid;
@@ -87,6 +105,7 @@ footer {
   max-height: 26rem;
   max-width: 22rem;
   margin-top: 2rem;
+  border-radius: 2.5rem;
 }
 .product-name {
   font-family: "Times New Roman", Times, serif;
@@ -109,5 +128,54 @@ footer {
 
 .product-rating span:last-child {
   color: black;
+  font-family: "Times New Roman", Times, serif;
+}
+.content {
+  padding: 1rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.details-image {
+  flex: 2 1 60rem;
+}
+.details-image img {
+  max-width: 70rem;
+  width: 100%;
+  border-radius: 2.5rem;
+}
+
+.details-info,
+.details-action {
+  flex: 1 1 30rem;
+}
+
+.details-info ul,
+.details-action ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.details-info h1{
+  font-size: 2rem;
   font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  color: teal;
+}
+
+.details-info li,
+.details-action li {
+  margin: 1rem;
+}
+
+.details-action{
+  border: 0.1rem gray solid;
+  border-radius: 1.5rem;
+  background-color: beige;
+  padding: 1rem;
 }
