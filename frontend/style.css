@@ -38,6 +38,13 @@ button.fw-primary:hover{
   
   width: 100%;
 }
+.success{
+  color: teal;
+}
+
+.error{
+  color: lightcoral;
+}
 
 .grid-container {
   display: grid;

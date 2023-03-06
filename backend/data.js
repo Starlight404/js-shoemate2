@@ -9,7 +9,7 @@ export default {
       brand: "Shoemate",
       rating: 4.5,
       numReviews: 10,
-      countInStock: 5,
+      countInStock: 0,
     },
     {
       _id: "2",

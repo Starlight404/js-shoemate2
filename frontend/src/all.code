@@ -1,0 +1,82 @@
+import HomeScreen from "./Screens/HomeScreen.js";
+import ProductScreen from "./Screens/ProductScreen.js";
+import Error404Screen from "./Screens/Error404Screen.js";
+import { parseRequestUrl } from "./utils.js";
+import CartScreen from "./Screens/CartScreen.js";
+
+
+
+
+const routes = {
+    '/':HomeScreen,
+    '/product/:id': ProductScreen,
+    '/cart/:id': CartScreen,
+    '/cart':CartScreen,
+};
+
+const router = async() =>{
+    const request = parseRequestUrl();
+    const parseUrl = 
+        (request.resource ? `/${request.resource}`:'/')+
+        (request.id? '/:id': '')+
+        (request.verb ? `/${request.verb}`: '');
+    const screen = routes[parseUrl]? routes[parseUrl]: Error404Screen;    
+
+    const main = document.getElementById("main-container")
+    main.innerHTML = await screen.render();
+    await screen.after_render();
+};
+window.addEventListener('load',router);
+window.addEventListener('hashchange',router);
+
+import { getProduct } from "../api";
+import { getCartItems, setCartItems } from "../LocalStorage";
+import { parseRequestUrl } from "../utils";
+
+const addToCart = (item, forceUpdate = false) => {
+  let cartItems = getCartItems();
+  const existItem = cartItems.find((x) => x.product === item.product);
+  if (existItem) {
+    cartItems = cartItems.map((x) =>
+      x.product === existItem.product ? item : x
+    );
+  } else {
+    cartItems = [...cartItems, item];
+  }
+  setCartItems(cartItems);
+};
+const CartScreen = {
+  after_render: () => {},
+  render: async () => {
+    const request = parseRequestUrl();
+    if (request.id) {
+      const product = await getProduct(request.id);
+      addToCart({
+        product: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        countInStock: product.countInStock,
+        qty: 1,
+      });
+    }
+    return `<div>Cart Screen</div>
+    <div>${getCartItems().length}</div>
+    `;
+  },
+};
+
+export default CartScreen;
+import { json } from "express";
+
+export const getCartItems = () => {
+  const cartItems = localStorage.getItem("cartItems")
+    ? json.parse(localStorage.getItem("cartItems"))
+    : [];
+  return cartItems;
+};
+
+export const setCartItems = (cartItems) => {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
+

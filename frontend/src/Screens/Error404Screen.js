@@ -1,7 +1,6 @@
 const Error404Screen = {
   render: () => {
-    return `<div>Page Not Found! Kuddus</div>`;
+    return `<div>Page not found</div>`;
   },
+  after_render: () => {},
 };
-
-export default Error404Screen;
