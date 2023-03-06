@@ -30,13 +30,15 @@ button {
 button:hover{
   border: 0.1rem black solid;
 }
-button.primary{
+button.fw-primary:hover{
   background-color: lightcoral;
 
 }
-.fw{
+.fw-primary{
+  
   width: 100%;
 }
+
 .grid-container {
   display: grid;
   grid-template-areas:
