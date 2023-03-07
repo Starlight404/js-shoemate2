@@ -31,9 +31,48 @@ const CartScreen = {
         qty: 1,
       });
     }
-    return `<div>Cart Screen</div>
-    <div>${getCartItems().length}</div>
-    `;
+    const cartItems = getCartItems();
+    return `
+    <div class ="cart">
+      <div class = "cart-list">
+        <ul class = "cart-list-container">
+          <li>
+            <h3> Shopping Cart</h3>
+            <div> Price </div>
+          </li>
+          ${
+            cartItems.length ===0?
+            '<div>Cart Is Empty. <a href = "/#/">Go Shpopping</a>':
+            cartItems.map(item =>`
+            <li>
+              <div class = "cart-image">
+              <img src = "${item.image}" alt = "${item.name}"/>
+              </div>
+              <div class = "cart-name">
+                <div>
+                  <a href = "/#/product/${item.product}">
+                    ${item.name}
+                  </a>
+                </div>
+                <div>
+                  Qty: <select class = "qty-select" id = "${item.product}">
+                  <option value = "1">1</option>
+                  </select>
+                  <button type = "button" class = "delete-button" id = "${item.  product}">
+                    Delete
+                  </button>  
+                </div>
+                <div class = "cart-price">
+                 BDT ${item.price}
+                </div>
+            </li>          
+          `
+                    ).join('/n')
+          }
+
+        </ul>
+
+    </div>`;
   },
 };
 
