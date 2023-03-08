@@ -21,15 +21,30 @@ const addToCart = (item, forceUpdate = false) => {
   }
 };
 
+const removeFromCart = (id) => {
+  setCartItems(getCartItems().filter((x) => x.product !== id));
+  if(id=== parseRequestUrl().id){
+    document.location.hash  = '/cart';
+  }else{
+    rerender(CartScreen);
+  }
+}
+
 const CartScreen = {
   after_render: () => {
     const qtySelects = document.getElementsByClassName("qty-select");
-    Array.from(qtySelects).forEach((qtySelect) => {
+    Array.from(qtySelects).forEach(qtySelect => {
       qtySelect.addEventListener("change", (e) => {
-        const item = getCartItems().find((x) => x.product === qtySelect.id);
+        const item = getCartItems().find( x => x.product === qtySelect.id);
         addToCart({ ...item, qty: Number(e.target.value) }, true);
       });
     });
+    const deleteButtons = document.getElementsByClassName("delete-button");
+    Array.from(deleteButtons).forEach(deleteButton => {
+      deleteButton.addEventListener('click',() => {
+        removeFromCart(deleteButton.id);
+      })
+    })
   },
   render: async () => {
     const request = parseRequestUrl();
