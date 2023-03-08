@@ -196,7 +196,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  background-color: bisque;
+  background-color: whitesmoke;
 }
 
 .cart-list{
@@ -253,4 +253,12 @@ footer {
 .cart-list select {
   font-size: 1.3rem;
   padding: 0.5rem;
+}
+button.primary-fws:hover{
+  background-color: lightcoral;
+
+}
+.primary-fws{
+  
+  width: 100%;
 }
