@@ -3,6 +3,7 @@ import cors from "cors";
 import data from "./data";
 import mongoose from "mongoose";
 import config from "./config";
+import userRouter from "./routers/userRouter";
 
 
 mongoose
@@ -14,13 +15,14 @@ mongoose
     console.log('Connected to MongoDB');
   })
   .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
+    console.error(error.reason);
   });
 
 
 const app = express();
 
 app.use(cors());
+app.use('/api/users',userRouter);
 app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
