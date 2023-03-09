@@ -27,22 +27,20 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-button:hover{
+button:hover {
   border: 0.1rem black solid;
 }
-button.fw-primary:hover{
+button.fw-primary:hover {
   background-color: lightcoral;
-
 }
-.fw-primary{
-  
+.fw-primary {
   width: 100%;
 }
-.success{
+.success {
   color: teal;
 }
 
-.error{
+.error {
   color: lightcoral;
 }
 
@@ -170,9 +168,9 @@ footer {
   list-style-type: none;
 }
 
-.details-info h1{
+.details-info h1 {
   font-size: 2rem;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   margin: 0;
   color: teal;
 }
@@ -182,7 +180,7 @@ footer {
   margin: 1rem;
 }
 
-.details-action{
+.details-action {
   border: 0.1rem gray solid;
   border-radius: 1.5rem;
   background-color: beige;
@@ -191,19 +189,18 @@ footer {
 
 /*Cart*/
 
-
-.content-cart{
+.content-cart {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   background-color: whitesmoke;
 }
 
-.cart-list{
+.cart-list {
   flex: 3 1 60rem;
 }
 
-.cart-action{
+.cart-action {
   flex: 1 1 20rem;
   background-color: lightgray;
   border-radius: 0.5rem;
@@ -221,7 +218,6 @@ footer {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 0.1rem grey solid;
-
 }
 
 .cart-list-container img {
@@ -236,17 +232,17 @@ footer {
 .cart-image {
   flex: 1 1;
 }
-.cart-name{
+.cart-name {
   flex: 8 1;
 }
-.cart-price{
+.cart-price {
   flex: 1 1;
   text-align: right;
 }
-.cart-name> div{
+.cart-name > div {
   padding: 1rem;
 }
-.cart-list h3{
+.cart-list h3 {
   margin: 0;
 }
 .cart-list button,
@@ -254,11 +250,54 @@ footer {
   font-size: 1.3rem;
   padding: 0.5rem;
 }
-button.primary-fws:hover{
+button.primary-fws:hover {
   background-color: lightcoral;
-
 }
-.primary-fws{
-  
+.primary-fws {
   width: 100%;
 }
+
+/* Form */
+
+.form-container {
+  display: flex;
+  background-color: antiquewhite;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-items {
+  display: flex;
+  font-family: 'Times New Roman', Times, serif;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem grey solid;
+  border-radius: 1.5rem;
+  list-style-type: none;
+}
+
+.form-items li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.form-container h1 {
+  font-size: 2.5rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.primary-sign {
+  font: 1.6rem helvetica;
+  padding: 1.6rem;
+  border: 0.1rem gray solid;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.primary-sign:hover {
+  background-color: lightcoral;
+}  
