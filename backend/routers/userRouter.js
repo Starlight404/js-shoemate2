@@ -17,4 +17,17 @@ userRouter.get("/createadmin", async (req, res) => {
   }
 });
 
+userRouter.post('/signin', async (req,res)=> {
+  const signinUser = await User.findOne({
+    email: req.body.email,
+    password: req.body.password
+  });
+  if(!signinUser){
+    res.status(401).send({
+      message: 'Invalid Email or Password',
+    });
+  }
+})
+
+
 export default userRouter;
