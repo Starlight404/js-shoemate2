@@ -5,6 +5,7 @@ import { parseRequestUrl } from "./utils.js";
 import CartScreen from "./Screens/CartScreen.js";
 import SigninScreen from "./Screens/SigninScreen.js";
 import Header from "./components/Header.js";
+import { hideLoading, showLoading } from "../../backend/utils.js";
 
 const routes = {
   "/": HomeScreen,
@@ -15,6 +16,7 @@ const routes = {
 };
 
 const router = async () => {
+  showLoading();
   const request = parseRequestUrl();
   const parseUrl =
     (request.resource ? `/${request.resource}` : "/") +
@@ -24,11 +26,12 @@ const router = async () => {
 
   const header = document.getElementById('header-container');
   header.innerHTML = await Header.render();
-  await Header.after_render();
+  await Header.after_render()
 
   const main = document.getElementById("main-container");
   main.innerHTML = await screen.render();
-  await screen.after_render();
+  await screen.after_render()
+  hideLoading();
 };
 window.addEventListener("load", router);
 window.addEventListener("hashchange", router);

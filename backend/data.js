@@ -21,10 +21,11 @@ export default {
       rating: 4.5,
       numReviews: 10,
       countInStock: 5,
+      description: "this is very nice"
     },
     {
       _id: "3",
-      name: "Leather Shoes",
+      name: "Nike air-force-1 OEM Grade",
       category: "Men",
       image: "/images/product-5.jpg",
       price: 1850,
@@ -32,6 +33,7 @@ export default {
       rating: 4.5,
       numReviews: 10,
       countInStock: 5,
+      description: "this product really comfortable"
     },
     {
       _id: "4",
