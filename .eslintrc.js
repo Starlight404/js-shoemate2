@@ -1,6 +1,7 @@
+
 module.exports = {
   env: {
-    brower: true,
+    browser: true,
     node: true,
     ecmaVersion2020: true,
   },

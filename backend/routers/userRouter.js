@@ -13,7 +13,6 @@ userRouter.get(
         email: "admin@example.com",
         password: "kaku1234",
         isAdmin: false,
-        
       });
       const createUser = await user.save();
       res.send(createUser);
@@ -34,14 +33,39 @@ userRouter.post(
       res.status(401).send({
         message: "Invalid Email or Password",
       });
-    }else {
+    } else {
       res.send({
-        _id :signinUser._id,
+        _id: signinUser._id,
         name: signinUser.name,
         email: signinUser.email,
         isAdmin: signinUser.isAdmin,
         token: generateToken(signinUser),
-      })
+      });
+    }
+  })
+);
+
+userRouter.post(
+  "/register",
+  expressAsyncHandler(async (req, res) => {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+    const createdUser = await user.save();
+    if (!createdUser) {
+      res.status(401).send({
+        message: "Invalid User Data",
+      });
+    } else {
+      res.send({
+        _id: createdUser._id,
+        name: createdUser.name,
+        email: createdUser.email,
+        isAdmin: createdUser.isAdmin,
+        token: generateToken(createdUser),
+      });
     }
   })
 );
